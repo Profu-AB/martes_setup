@@ -1,5 +1,14 @@
 CURRENT_DIR="$(pwd)"
-CURRENT_USER="test"
+
+set -euo pipefail
+
+USER_NAME="${1:-}"
+if [[ -z "$USER_NAME" ]]; then
+  echo "Usage: $0 <linux-username>" >&2
+  exit 1
+fi
+
+CURRENT_USER=$USER_NAME
 MARTES_USER="martes"
 
 sudo apt-get update
